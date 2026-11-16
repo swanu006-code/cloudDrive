@@ -10,4 +10,10 @@ public interface StoredFileRepository extends JpaRepository<StoredFile, Long> {
     List<StoredFile> findByOwnerIdOrderByCreatedAtDesc(Long ownerId);
 
     Optional<StoredFile> findByIdAndOwnerId(Long id, Long ownerId);
+
+    List<StoredFile> findByOwnerIdAndFolderIdIsNullOrderByCreatedAtDesc(Long ownerId);
+
+    List<StoredFile> findByOwnerIdAndFolderIdOrderByCreatedAtDesc(Long ownerId, Long folderId);
+
+    boolean existsByFolderId(Long folderId);
 }
